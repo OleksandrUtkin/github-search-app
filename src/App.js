@@ -15,8 +15,6 @@ const mapStateToProps = (store) => {
     }
 };
 
-
-
 // const wrappedMainComponent = connect(mapStateToProps)(App);
 
 function App(props) {
