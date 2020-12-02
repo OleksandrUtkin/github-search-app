@@ -18,7 +18,7 @@ const mapStateToProps = (store) => {
 // const wrappedMainComponent = connect(mapStateToProps)(App);
 
 function App(props) {
-    console.log(props);
+    // console.log(props);
 
 
     const [orgName, setOrgName] = useState('');
@@ -44,14 +44,14 @@ function App(props) {
         //         setOrgError(error.message);
         //     })
 
-        console.log(props.store)
+        // console.log(props.store)
     };
 
     return (
         <>
             <h1>Github search app</h1>
             <SearchForm
-                handleSubmit={handleSubmit}
+                // handleSubmit={handleSubmit}
             />
             <SearchResults
                 orgName={orgName}

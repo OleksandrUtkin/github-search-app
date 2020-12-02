@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import inputReducer from './inputValue'
+import organizationReducer from "./organization";
 
 const allReducers = combineReducers ({
-    inputReducer: inputReducer
+    organizationReducer: organizationReducer
 });
 
 export default allReducers;
