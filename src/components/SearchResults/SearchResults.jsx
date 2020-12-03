@@ -1,6 +1,7 @@
 import React from 'react';
 import './SearchResults.scss';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 
 const SearchResults = (props) => {
 
@@ -14,6 +15,12 @@ const SearchResults = (props) => {
             </ul>
         </>
     )
+};
+
+SearchResults.propTypes = {
+    organization: PropTypes.string,
+    repositories: PropTypes.array,
+    errorMsg: PropTypes.string
 };
 
 const mapStateToProps = (store) => {
