@@ -4,7 +4,7 @@ import './scss/index.scss';
 import App from './App';
 import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
-import rootReducer from "./store/reducers/reducers";
+import rootReducer from "./store/reducers/repositories";
 import {composeWithDevTools} from "redux-devtools-extension";
 import ReduxThunk from "redux-thunk";
 
@@ -13,7 +13,6 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(ReduxThunk ))
 );
 
-// console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>

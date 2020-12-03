@@ -1,21 +1,14 @@
 import React from 'react';
 import './SearchResults.scss';
+import {connect} from "react-redux";
 
-const SearchResults = (props) => {
-    let orgName;
-    let repositories;
-    if (props.orgError) {
-        orgName = <h3 className='search-results__organization'>{props.orgError}</h3>;
-    } else if (props.orgName === undefined) {
-        orgName = <h3 className='search-results__organization'>'Organization not found'</h3>;
-    } else {
-        orgName = <h3 className='search-results__organization'>{props.orgName}</h3>;
-        repositories = props.repositories.slice(0,5).map(repo => <li className='search-results__li' key={repo.id}>{props.repositories.name}>{repo.name}</li>)
-    }
+const SearchResults = props => {
+
+    const repositories = props.repositories.slice(0,5).map(repo => <li className='search-results__li' key={repo.id}>{repo.name}</li>);
 
     return (
         <>
-            {orgName}
+            <h3 className='search-results__organization'>{props.errorMsg ? props.errorMsg : props.organization}</h3>
             <ul className='search-results'>
                 {repositories && repositories}
             </ul>
@@ -23,4 +16,12 @@ const SearchResults = (props) => {
     )
 };
 
-export default SearchResults;
+const mapStateToProps = store => {
+    return {
+        organization: store.organization,
+        repositories: store.repositories,
+        errorMsg: store.errorMsg,
+    }
+};
+
+export default connect(mapStateToProps)(SearchResults);
