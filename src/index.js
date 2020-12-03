@@ -8,10 +8,35 @@ import rootReducer from "./store/reducers/repositories";
 import {composeWithDevTools} from "redux-devtools-extension";
 import ReduxThunk from "redux-thunk";
 
+const saveToLocalStore = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('state', serializedState);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const loadFromLocalStore = () => {
+    try {
+        const serializedState = localStorage.getItem('state');
+        if(serializedState === null) return undefined;
+        return JSON.parse(serializedState);
+    } catch (e) {
+        console.log(e);
+        return undefined;
+    }
+};
+
+const persistedState = loadFromLocalStore();
+
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(ReduxThunk ))
+    persistedState,
+    composeWithDevTools(applyMiddleware(ReduxThunk))
 );
+
+store.subscribe(() => saveToLocalStore(store.getState()));
 
 ReactDOM.render(
   <React.StrictMode>

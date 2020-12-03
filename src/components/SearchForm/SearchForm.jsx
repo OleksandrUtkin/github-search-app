@@ -3,14 +3,14 @@ import './SearchForm.scss';
 import {connect} from 'react-redux';
 import fetchRepos from "../../store/actions/getRepos";
 
-const SearchForm = props => {
+const SearchForm = (props) => {
     const [inputValue, setInputValue] = useState('');
 
-    const handleChange = e => {
+    const handleChange = (e) => {
         setInputValue(e.target.value)
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         props.fetchRepos(inputValue);
     };
@@ -29,7 +29,7 @@ const SearchForm = props => {
     )
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         fetchRepos: (inputValue) => dispatch(fetchRepos(inputValue))
     }

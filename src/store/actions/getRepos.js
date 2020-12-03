@@ -3,21 +3,21 @@ import axios from 'axios';
 export const GET_REPOS_SUCCESS = 'GET_REPOS_SUCCESS';
 export const GET_REPOS_FAILURE = 'GET_REPOS_FAILURE';
 
-export const fetchReposSuccess = repos => {
+export const fetchReposSuccess = (repos) => {
     return {
         type: GET_REPOS_SUCCESS,
         payload: repos
     }
 };
 
-export const fetchReposFailure = errorMsg => {
+export const fetchReposFailure = (errorMsg) => {
     return {
         type: GET_REPOS_FAILURE,
         payload: errorMsg
     }
 };
 
-const fetchRepos = inputValue => {
+const fetchRepos = (inputValue) => {
     return dispatch => {
         axios.get(`https://api.github.com/orgs/${inputValue}/repos`)
             .then(response => {

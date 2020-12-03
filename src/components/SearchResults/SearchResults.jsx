@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchResults.scss';
 import {connect} from "react-redux";
 
-const SearchResults = props => {
+const SearchResults = (props) => {
 
     const repositories = props.repositories.slice(0,5).map(repo => <li className='search-results__li' key={repo.id}>{repo.name}</li>);
 
@@ -16,7 +16,7 @@ const SearchResults = props => {
     )
 };
 
-const mapStateToProps = store => {
+const mapStateToProps = (store) => {
     return {
         organization: store.organization,
         repositories: store.repositories,
