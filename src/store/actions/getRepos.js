@@ -22,11 +22,11 @@ const fetchRepos = (inputValue) => {
         axios.get(`https://api.github.com/orgs/${inputValue}/repos`)
             .then(response => {
                 const repos = response.data;
-                dispatch(fetchReposSuccess(repos));
+                dispatch(fetchReposSuccess({repositories: repos, organization: inputValue}));
             })
             .catch(error => {
                 if(error.message === 'Request failed with status code 404') {
-                    const errorMsg = 'Not Found';
+                    const errorMsg = 'Organization not Found';
                     dispatch(fetchReposFailure(errorMsg));
                 } else {
                     const errorMsg = error.message;

@@ -3,7 +3,7 @@ import {GET_REPOS_FAILURE} from '../actions/getRepos';
 
 const defaultState = {
     organization: null,
-    repositories: [],
+    repositories: null,
     errorMsg: null
 };
 
@@ -13,8 +13,8 @@ const organizationReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 errorMsg: null,
-                repositories: action.payload,
-                organization: action.payload[0].owner.login
+                repositories: action.payload.repositories,
+                organization: action.payload.organization
             };
         case GET_REPOS_FAILURE:
             return  {
